@@ -21,6 +21,8 @@ The following **optional** features are implemented:
   - App should neatly arrange data in both landscape and portrait mode
 - [x] Implement Glide to display placeholder graphics during loading
   - Note: this feature is difficult to capture in a GIF without throttling internet speeds.  Instead, include an additional screencap of your Glide code implementing the feature.  (<10 lines of code)
+    ![Screenshot 2023-10-02 at 11 11 28 PM](https://github.com/AryanNesti/FlixsterPlus/assets/98928740/e8292298-a58d-49b4-a992-dd793c428ceb)
+
 
 The following **additional** features are implemented:
 
@@ -31,6 +33,13 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 ![FlixsterPlus](https://github.com/AryanNesti/FlixsterPlus/assets/98928740/f51c2ec7-ce10-4efe-ac42-7576db8a5fc1)
+
+![Screenshot 2023-10-02 at 11 11 28 PM](https://github.com/AryanNesti/FlixsterPlus/assets/98928740/f059988a-a69a-41dc-af7b-8d76a09234c5)
+
+
+![Screenshot 2023-10-02 at 11 11 59 PM](https://github.com/AryanNesti/FlixsterPlus/assets/98928740/b409c7cf-c494-4394-88dc-60832ab77ad4)
+
+![Screenshot 2023-10-02 at 11 12 16 PM](https://github.com/AryanNesti/FlixsterPlus/assets/98928740/c11437e7-708e-4af1-8039-3aa67563b875)
 
 
 <!-- Replace this with whatever GIF tool you used! -->
