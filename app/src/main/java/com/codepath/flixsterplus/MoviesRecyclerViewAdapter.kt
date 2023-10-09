@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.codepath.flixsterplus.R.id
 
 
@@ -22,7 +23,7 @@ class MoviesRecyclerViewAdapter(
     {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_best_seller_book, parent, false)
+            .inflate(R.layout.fragment_movie, parent, false)
         return BookViewHolder(view)
     }
 
@@ -32,10 +33,8 @@ class MoviesRecyclerViewAdapter(
      */
     inner class BookViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         var mItem: Movie? = null
-        val mBookTitle: TextView = mView.findViewById<View>(id.book_title) as TextView
-        val mBookDescription: TextView = mView.findViewById<View>(id.book_description) as TextView
-        val mBookImage: ImageView = mView.findViewById<View>(id.book_image) as ImageView
-        val moviePoster: ImageView = mView.findViewById<View>(id.moviePoster) as ImageView
+        val mMovieTitle: TextView = mView.findViewById<View>(id.movie_title) as TextView
+        val mMoviePoster: ImageView = mView.findViewById<View>(id.movie_poster) as ImageView
     }
 
     /**
@@ -43,27 +42,20 @@ class MoviesRecyclerViewAdapter(
      */
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-        val book = books[position]
+        val movie = books[position]
 
-        holder.mItem = book
-        holder.mBookTitle.text = book.title
-        holder.mBookDescription.text = book.description
-
+        holder.mItem = movie
+        holder.mMovieTitle.text = movie.title
         Glide.with(holder.mView)
-            .load("https://image.tmdb.org/t/p/w500" + book.imagePosterPath)
+            .load("https://image.tmdb.org/t/p/w500" + movie.imagePosterPath)
             .placeholder(R.drawable.ic_launcher_foreground)
-            .centerInside()
-            .into(holder.mBookImage)
-
-        Glide.with(holder.mView)
-            .load("https://image.tmdb.org/t/p/w500" + book.backdrop)
-            .placeholder(R.drawable.ic_launcher_foreground)
-            .centerInside()
-            .into(holder.moviePoster)
+            .centerCrop()
+            .transform(RoundedCorners(30))
+            .into(holder.mMoviePoster)
 
         holder.mView.setOnClickListener {
-            holder.mItem?.let { book ->
-                mListener?.onItemClick(book)
+            holder.mItem?.let { mv ->
+                mListener?.onItemClick(mv)
             }
         }
     }

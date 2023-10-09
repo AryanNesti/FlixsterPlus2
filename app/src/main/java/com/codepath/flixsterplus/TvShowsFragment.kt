@@ -18,29 +18,18 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Headers
 
-// --------------------------------//
-// CHANGE THIS TO BE YOUR API KEY  //
-// --------------------------------//
 private const val API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-const val MOVIE_EXTRA = "MOVIE_EXTRA"
+const val TVSHOW_EXTRA = "TVSHOW_EXTRA"
 
-/*
- * The class for the only fragment in the app, which contains the progress bar,
- * recyclerView, and performs the network calls to the new postings api.
- */
-class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
-
-    /*
-     * Constructing the view
-     */
+class TvShowsFragment : Fragment(), OnListFragmentInteractionListener {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_best_seller_books_list, container, false)
-        val progressBar = view.findViewById<View>(R.id.progress) as ContentLoadingProgressBar
-        val recyclerView = view.findViewById<View>(R.id.list) as RecyclerView
+        val view = inflater.inflate(R.layout.fragment_tvshow_list, container, false)
+        val progressBar = view.findViewById<View>(R.id.tvshowProgress) as ContentLoadingProgressBar
+        val recyclerView = view.findViewById<View>(R.id.tvshowList) as RecyclerView
         val context = view.context
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL ,false)
         updateAdapter(progressBar, recyclerView)
@@ -59,7 +48,7 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
         params["api_key"] = API_KEY
 
         client[
-            "https://api.themoviedb.org/3/movie/popular",
+            "https://api.themoviedb.org/3/tv/popular",
             params,
             object : JsonHttpResponseHandler() {
                 override fun onSuccess(
@@ -71,15 +60,15 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
                     progressBar.hide()
 
                     //TODO - Parse JSON into Models
-                    val booksRawJSON = json.jsonObject.get("results").toString()
+                    val tvshowsRawJSON = json.jsonObject.get("results").toString()
                     val gson = Gson()
-                    val arrayBookType = object : TypeToken<List<Movie>>() {}.type
-                    val models : List<Movie> = gson.fromJson(booksRawJSON, arrayBookType)
+                    val arraytvshowType = object : TypeToken<List<TvShow>>() {}.type
+                    val models : List<TvShow> = gson.fromJson(tvshowsRawJSON, arraytvshowType)
 
-                    recyclerView.adapter = MoviesRecyclerViewAdapter(models, this@MoviesFragment)
+                    recyclerView.adapter = TvShowsRecyclerViewAdapter(models, this@TvShowsFragment)
 
                     // Look for this in Logcat:
-                    Log.d("BestSellerBooksFragment", booksRawJSON)
+                    Log.d("BestSellerBooksFragment", tvshowsRawJSON)
                 }
 
                 override fun onFailure(
@@ -92,11 +81,11 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
                     progressBar.hide()
 
                     // If the error is not null, log it!
-                t?.message?.let {
-                    Log.e("BestSellerBooksFragment", errorResponse)
+                    t?.message?.let {
+                        Log.e("BestSellerBooksFragment", errorResponse)
+                    }
                 }
-            }
-        }]
+            }]
 
 
     }
@@ -104,14 +93,13 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
     /*
      * What happens when a particular book is clicked.
      */
-    override fun onItemClick(movie: Movie) {
-        val intent = Intent(context, MovieDetail::class.java)
-        intent.putExtra(MOVIE_EXTRA, movie)
+    override fun onItemClick(tvshow: TvShow) {
+        val intent = Intent(context, TvShowDetail::class.java)
+        intent.putExtra(TVSHOW_EXTRA, tvshow)
         context?.startActivity(intent)
-        Toast.makeText(context, "test: " + movie.title, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "test: " + tvshow.title, Toast.LENGTH_LONG).show()
     }
-    override fun onItemClick(tvShow: TvShow) {
+    override fun onItemClick(movie: Movie) {
         TODO("Not yet implemented")
     }
-
 }

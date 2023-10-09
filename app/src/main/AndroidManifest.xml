@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
+        <activity android:name=".MovieDetail"
+            android:exported="true" />
+        <activity android:name=".TvShowDetail"
+            android:exported="true" />
         <activity
             android:name="com.codepath.flixsterplus.MainActivity"
             android:configChanges="orientation|screenSize"

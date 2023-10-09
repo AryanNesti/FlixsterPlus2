@@ -1,15 +1,13 @@
 package com.codepath.flixsterplus
 
-
 import android.support.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.Serializable
-
 @Keep
 @Serializable
-data class Movie(
+data class TvShow (
     @JvmField
-    @SerializedName("title")
+    @SerializedName("name")
     var title: String? = null,
 
     @JvmField
@@ -25,7 +23,7 @@ data class Movie(
     var description: String? = null,
 
     @JvmField
-    @SerializedName("release_date")
+    @SerializedName("first_air_date")
     var releaseDate: String? = null,
 
     @JvmField
@@ -36,4 +34,4 @@ data class Movie(
     @SerializedName("vote_average")
     var rating: String? = null
 
-) : java.io.Serializable
+    ) : java.io.Serializable

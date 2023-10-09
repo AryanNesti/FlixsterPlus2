@@ -6,35 +6,35 @@
     android:layout_height="match_parent">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
+        android:id="@+id/tvshowList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:layoutManager="LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:context=".MoviesFragment"
-        tools:listitem="@layout/fragment_movie" />
+        app:layout_constraintTop_toBottomOf="@+id/showTextView"
+        tools:context=".TvShowFragment"
+        tools:listitem="@layout/fragment_tvshow" />
 
     <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/progress"
+        android:id="@+id/tvshowProgress"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:indeterminate="true"
         android:theme="@style/Widget.AppCompat.ProgressBar"
-        app:layout_constraintBottom_toBottomOf="@+id/list"
-        app:layout_constraintEnd_toEndOf="@+id/list"
-        app:layout_constraintStart_toStartOf="@+id/list"
-        app:layout_constraintTop_toTopOf="@+id/list" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvshowList"
+        app:layout_constraintEnd_toEndOf="@+id/tvshowList"
+        app:layout_constraintStart_toStartOf="@+id/tvshowList"
+        app:layout_constraintTop_toTopOf="@+id/tvshowList" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/showTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Most Popular Movies This Week"
+        android:text="Most Popular Tv Shows This Week"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_margin="10dp"
