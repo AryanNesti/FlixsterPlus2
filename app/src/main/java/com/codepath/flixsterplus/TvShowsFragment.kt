@@ -18,7 +18,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import okhttp3.Headers
 
-private const val API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+private const val API_KEY = BuildConfig.API_KEY
 const val TVSHOW_EXTRA = "TVSHOW_EXTRA"
 
 class TvShowsFragment : Fragment(), OnListFragmentInteractionListener {
